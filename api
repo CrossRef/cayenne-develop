@@ -1,18 +1,19 @@
 <VirtualHost *:80>
 
-  ServerName       api.crossref.org
+  ServerName       http://api.crossref.org:80
 
   ServerAdmin      labs@crossref.org
   ErrorLog         /var/log/apache2/api-error_log
   TransferLog      /var/log/apache2/api-access_log
   UseCanonicalName On
 
-  Redirect	   /deposits	https://api.crossref.org/deposits
+  RewriteEngine	   On
+  RewriteRule	   /deposits(.*)	https://api.crossref.org/deposits$1 [R]
 
   ProxyRequests		Off
   ProxyPreserveHost	On
 
-  <Proxy *>
+  <Proxy http://localhost:3001/*>
     Order deny,allow
     Allow from all
   </Proxy>
@@ -20,16 +21,11 @@
   ProxyPass        /  http://localhost:3001/
   ProxyPassReverse /  http://localhost:3001/
 
-  <Location />
-    Order allow,deny
-    Allow from all
-  </Location>
-
 </VirtualHost>
 
 <VirtualHost *:443>
 
-  ServerName	api.crossref.org
+  ServerName	https://api.crossref.org:443
   
   ServerAdmin		labs@crossref.org
   ErrorLog		/var/log/apache2/api-ssl-error_log
@@ -38,14 +34,14 @@
 
   SSLEngine			On
   SSLProtocol			all
-  SSLCertificateFile		api.crt
-  SSLCertificateKeyFile		api.key
-  SSLCertificateChainFile	rapidssl-intermediate.crt
+  SSLCertificateFile		/etc/apache2/ssl/api_certificates/public.crt
+  SSLCertificateKeyFile		/etc/apache2/ssl/api_certificates/api.crossref.org.key
+  SSLCertificateChainFile	/etc/apache2/ssl/api_certificates/intermediate.crt
 
   ProxyRequests		Off	
   ProxyPreserveHost	On
 
-  <Proxy *>
+  <Proxy http://localhost:3001/*>
     Order deny,allow
     Allow from all
   </Proxy>
@@ -53,9 +49,5 @@
   ProxyPass		/	http://localhost:3001/
   ProxyPassReverse	/	http://localhost:3001/
 
-  <Location />
-    Order allow,deny
-    Allow from all
-  </Location>
 
 </VirtualHost>
