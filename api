@@ -37,6 +37,7 @@
   UseCanonicalName	On
 
   SSLEngine			On
+  SSLProtocol			all
   SSLCertificateFile		api.crt
   SSLCertificateKeyFile		api.key
   SSLCertificateChainFile	rapidssl-intermediate.crt
