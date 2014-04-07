@@ -1,0 +1,60 @@
+<VirtualHost *:80>
+
+  ServerName       api.crossref.org
+
+  ServerAdmin      labs@crossref.org
+  ErrorLog         /var/log/apache2/api-error_log
+  TransferLog      /var/log/apache2/api-access_log
+  UseCanonicalName On
+
+  Redirect	   /deposits	https://api.crossref.org/deposits
+
+  ProxyRequests		Off
+  ProxyPreserveHost	On
+
+  <Proxy *>
+    Order deny,allow
+    Allow from all
+  </Proxy>
+
+  ProxyPass        /  http://localhost:3001/
+  ProxyPassReverse /  http://localhost:3001/
+
+  <Location />
+    Order allow,deny
+    Allow from all
+  </Location>
+
+</VirtualHost>
+
+<VirtualHost *:443>
+
+  ServerName	api.crossref.org
+  
+  ServerAdmin		labs@crossref.org
+  ErrorLog		/var/log/apache2/api-ssl-error_log
+  TransferLog		/var/log/apache2/api-ssl-access_log
+  UseCanonicalName	On
+
+  SSLEngine			On
+  SSLCertificateFile		api.crt
+  SSLCertificateKeyFile		api.key
+  SSLCertificateChainFile	rapidssl-intermediate.crt
+
+  ProxyRequests		Off	
+  ProxyPreserveHost	On
+
+  <Proxy *>
+    Order deny,allow
+    Allow from all
+  </Proxy>
+
+  ProxyPass		/	http://localhost:3001/
+  ProxyPassReverse	/	http://localhost:3001/
+
+  <Location />
+    Order allow,deny
+    Allow from all
+  </Location>
+
+</VirtualHost>
