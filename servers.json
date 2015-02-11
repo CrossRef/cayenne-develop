@@ -1,1 +1,2 @@
-{"trinity": "148.251.178.33"}
+{"trinity": {"address": "148.251.178.33"
+	     "metadata": "provider=hetzner,ram=48,cpu=8,disk=spin"}}

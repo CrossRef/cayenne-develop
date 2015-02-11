@@ -7,10 +7,10 @@ a name for the server and an IP within `servers.json`.
 
 1. Install ruby and the `bundler` gem.
 
-2. Install gem dependencies with `bundler install`.
+2. Install gem dependencies with `bundle install`.
 
 3. Run `bootstrap.rb` for any of the IPs in `servers.json`
 
-ROBOT_USER=user ROBOT_PASSWORD=password ./bootstrap.rb trinity
+    ROBOT_USER=user ROBOT_PASSWORD=password ./bootstrap.rb trinity
 
 ## Deploying Services
