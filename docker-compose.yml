@@ -1,0 +1,69 @@
+api:
+  build: ./cayenne
+  command: lein run :nrepl :api :deposit-api
+  links:
+    - mongo
+    - solr
+  environment:
+    - MONGO_HOST=mongo
+    - SOLR_HOST=solr
+    - API_PORT=3000
+    - NREPL_PORT=7880
+  ports:
+    - 80:3000
+indexer:
+  build: ./cayenne
+  command: lein run :nrepl :index
+  environment:
+    - MONGO_HOST=mongo
+    - SOLR_HOST=solr
+    - NREPL_PORT=7881
+  links:
+    - mongo
+    - solr
+  ports:
+    - 7881
+updater:
+  build: ./cayenne
+  command: lein run :nrepl :update-members :update-journals :update-funders
+  environment:
+    - MONGO_HOST=mongo
+    - SOLR_HOST=solr
+    - NREPL_PORT=7882
+  links:
+    - mongo
+    - solr
+  ports:
+    - 7882
+feeder:
+  build: ./cayenne
+  command: lein run :nrepl :api :feed-api :process-feed-files
+  environment:
+    - MONGO_HOST=mongo
+    - SOLR_HOST=solr
+    - NREPL_PORT=7883
+    - API_PORT=3001
+  links:
+    - mongo
+    - solr
+  ports:
+    - 3001:3001
+    - 7883
+# data:
+#   build: ./cayenne-data
+#   links:
+#     - api
+#     - solr
+#   environment:
+#     - API_INTERNAL_URL=http://api
+#   command: lein run
+#   ports:
+#     - 3002:3000
+mongo:
+  image: mongo
+  ports:
+    - 27017
+solr:
+  build: ./cayenne-solr
+  ports:
+    - 8983:8983

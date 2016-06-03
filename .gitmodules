@@ -1,0 +1,15 @@
+[submodule "cayenne"]
+	path = cayenne
+	url = https://github.com/CrossRef/cayenne
+[submodule "cayenne-solr"]
+	path = cayenne-solr
+	url = https://github.com/CrossRef/cayenne-solr
+[submodule "cayenne-data"]
+	path = cayenne-data
+	url = https://github.com/CrossRef/cayenne-data
+[submodule "deposit-update-message-handler"]
+	path = deposit-update-message-handler
+	url = https://github.com/CrossRef/deposit-update-message-handler
+[submodule "pdf-handler"]
+	path = pdf-handler
+	url = https://github.com/CrossRef/pdf-handler
