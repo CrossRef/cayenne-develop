@@ -34,6 +34,19 @@ Use the API in your browser, e.g. `http://the-docker-machine-ip/works`.
 
 Solr is exposed on port `8983`. Have a look what is in solr using the solr 
 admin UI, e.g. `http://the-docker-machine-ip:8983/solr` in your browser.
+
+### Connect the Mongo Command-line Client
+
+    ./scripts/mongo
+
+### Load in Some Data
+
+Load in real data using the scripts in `./scripts`:
+
+- `./scripts/load-funders.sh`
+- `./scripts/load-members.sh`
+- `./scripts/load-journals.sh`
+- `./scripts/load-last-day-works.sh`
 	
 ### Connecting to REPLs
 
