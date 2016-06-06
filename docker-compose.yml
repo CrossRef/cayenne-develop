@@ -49,16 +49,15 @@ feeder:
   ports:
     - 3001:3001
     - 7883
-# data:
-#   build: ./cayenne-data
-#   links:
-#     - api
-#     - solr
-#   environment:
-#     - API_INTERNAL_URL=http://api
-#   command: lein run
-#   ports:
-#     - 3002:3000
+data:
+  build: ./cayenne-data
+  links:
+    - api
+  environment:
+    - API_INTERNAL_URL=http://api
+  command: lein run
+  ports:
+    - 3002:3000
 mongo:
   image: mongo
   ports:

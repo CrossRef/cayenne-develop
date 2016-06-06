@@ -30,6 +30,12 @@ the docker machine is called 'default'):
 
 Use the API in your browser, e.g. `http://the-docker-machine-ip/works`.
 
+### Use the Data Proxy
+
+The data proxy service is exposed on port `3002`:
+
+    curl -iH "Accept: text/turtle" http://the-docker-machine-ip:3002/10.5555/12345678
+
 ### Browse the Solr Admin UI
 
 Solr is exposed on port `8983`. Have a look what is in solr using the solr 
@@ -37,7 +43,7 @@ admin UI, e.g. `http://the-docker-machine-ip:8983/solr` in your browser.
 
 ### Connect the Mongo Command-line Client
 
-    ./scripts/mongo
+    ./scripts/mongo.sh
 
 ### Load in Some Data
 
