@@ -41,6 +41,12 @@ The data proxy service is exposed on port `3002`:
 Metadata search runs on port `3003`. Open your browser and go to:
 
     http://the-docker-machine-ip:3003
+	
+### Use the Crossmark Dialog Server
+
+A Crossmark dialog server runs on port `3004`. In your browser:
+
+    http://the-docker-machine-ip:3004
 
 ### Browse the Solr Admin UI
 

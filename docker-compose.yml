@@ -66,6 +66,13 @@ search:
   command: bundle exec unicorn -p 3000 -d -c unicorn.rb
   ports:
     - 3003:3000
+crossmark:
+  build: ./crossmark-dialog
+  links:
+    - api
+  command: lein run -m crossmark-dialog.daemon
+  ports:
+    - 3004:3999
 mongo:
   image: mongo
   ports:

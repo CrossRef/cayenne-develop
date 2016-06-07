@@ -16,3 +16,6 @@
 [submodule "cr-search"]
 	path = cr-search
 	url = https://github.com/CrossRef/cr-search.git
+[submodule "crossmark-dialog"]
+	path = crossmark-dialog
+	url = https://github.com/CrossRef/crossmark-dialog.git
