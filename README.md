@@ -35,6 +35,12 @@ Use the API in your browser, e.g. `http://the-docker-machine-ip/works`.
 The data proxy service is exposed on port `3002`:
 
     curl -iH "Accept: text/turtle" http://the-docker-machine-ip:3002/10.5555/12345678
+	
+### Use Metadata Search
+
+Metadata search runs on port `3003`. Open your browser and go to:
+
+    http://the-docker-machine-ip:3003
 
 ### Browse the Solr Admin UI
 
