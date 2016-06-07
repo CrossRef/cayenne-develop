@@ -58,6 +58,14 @@ data:
   command: lein run
   ports:
     - 3002:3000
+search:
+  build: ./cr-search
+  links:
+    - solr
+    - mongo
+  command: bundle exec unicorn -p 3000 -d -c unicorn.rb
+  ports:
+    - 3003:3000
 mongo:
   image: mongo
   ports:

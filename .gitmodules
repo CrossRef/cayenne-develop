@@ -13,3 +13,6 @@
 [submodule "pdf-handler"]
 	path = pdf-handler
 	url = https://github.com/CrossRef/pdf-handler
+[submodule "cr-search"]
+	path = cr-search
+	url = https://github.com/CrossRef/cr-search.git
