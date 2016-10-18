@@ -4,9 +4,7 @@ Quickly get a cayenne development environment running. You will need:
 
 1. Docker
 
-While we wait for Docker for Mac, the best option for getting docker going on OSX 
-is to use VirtualBox and Docker Machine. Make sure you have `docker` / 
-`docker-machine` / `docker-compose`.
+Install Docker for Mac or Docker Machine.
 
 ## Running a Development System
 
@@ -25,6 +23,8 @@ Now play around with the system, for example, look up your docker IP (in this ca
 the docker machine is called 'default'):
 
     docker-machine ip default
+    
+When using Docker for Mac container ports will appear on `localhost`.
 
 ### Use the API
 
