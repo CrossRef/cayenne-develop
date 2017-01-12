@@ -18,11 +18,12 @@ indexer:
     - MONGO_HOST=mongo
     - SOLR_HOST=solr
     - NREPL_PORT=7881
+    - OAI_PATH=http://localhost:80/OAIHandler
   links:
     - mongo
     - solr
   ports:
-    - 7881
+    - 7881:7881
 updater:
   build: ./cayenne
   command: lein run :nrepl :update-members :update-journals :update-funders
@@ -34,7 +35,7 @@ updater:
     - mongo
     - solr
   ports:
-    - 7882
+    - 7882:7882
 feeder:
   build: ./cayenne
   command: lein run :nrepl :api :feed-api :process-feed-files
@@ -48,13 +49,13 @@ feeder:
     - solr
   ports:
     - 3001:3001
-    - 7883
+    - 7883:7883
 data:
   build: ./cayenne-data
   links:
     - api
   environment:
-    - API_INTERNAL_URL=http://api
+    - API_INTERNAL_URL=http://api:3000
   command: lein run
   ports:
     - 3002:3000
@@ -67,10 +68,16 @@ search:
   ports:
     - 3003:3000
 crossmark:
-  build: ./crossmark-dialog
+  build: ./crossmark
   links:
     - api
-  command: lein run -m crossmark-dialog.daemon
+  command: lein run
+  environment:
+    - API_BASE=http://api:3000
+    - PORT=3999
+    - CDN_URL=http://localhost:3004
+    - CROSSMARK_SERVER=http://localhost:3004
+    - JWT_SECRET=TEST
   ports:
     - 3004:3999
 mongo:

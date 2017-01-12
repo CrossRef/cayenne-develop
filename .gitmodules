@@ -19,3 +19,6 @@
 [submodule "crossmark-dialog"]
 	path = crossmark-dialog
 	url = https://github.com/CrossRef/crossmark-dialog.git
+[submodule "crossmark"]
+	path = crossmark
+	url = https://github.com/crossref/crossmark
