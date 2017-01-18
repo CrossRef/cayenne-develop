@@ -83,7 +83,7 @@ crossmark:
 mongo:
   image: mongo
   ports:
-    - 27017
+    - 27017:27017
 solr:
   build: ./cayenne-solr
   ports:
